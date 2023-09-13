@@ -18,10 +18,6 @@ export const Layout = () => {
           <Outlet />
         </Suspense>
       </main>
-
-      <footer>
-        <h2>Footer</h2>
-      </footer>
     </>
   );
 };
