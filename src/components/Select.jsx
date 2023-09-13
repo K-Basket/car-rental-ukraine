@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { ContainerSt, TitleStyled } from './Select.styled';
+import { useEffect, useState } from 'react';
+import { ContainerSt, ListOptionsSt, TitleStyled } from './Select.styled';
 import SvgSprite from 'images/sprite.svg';
 
 export const Select = () => {
@@ -14,9 +14,25 @@ export const Select = () => {
     { id: 8, name: 'Hungary' },
     { id: 9, name: 'India' },
     { id: 10, name: 'Japan' },
+    { id: 11, name: 'Egypt' },
+    { id: 12, name: 'Finland' },
+    { id: 13, name: 'Ghana' },
+    { id: 14, name: 'Hungary' },
+    { id: 15, name: 'India' },
+    { id: 16, name: 'Japan' },
   ]);
   const [getOptionName, setGetOptionName] = useState(null);
   const [showOptionList, setShowOptionList] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = evt => {
+      if (evt.code === 'Escape') setShowOptionList(false);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [showOptionList]);
 
   const handleOptionClick = evt => {
     const option = evt.target.dataset.name;
@@ -29,30 +45,46 @@ export const Select = () => {
 
   console.log('getOptionName :>> ', getOptionName);
   console.log('showOptionList :>> ', showOptionList);
+
   return (
     <>
       <TitleStyled>Component Select</TitleStyled>
-      <ContainerSt>
-        <p>Enter the text</p>
+
+      <ContainerSt onClick={handleShowList}>
+        <p>{!getOptionName ? 'Enter the text' : `${getOptionName}`}</p>
         <svg
           width="20px"
           height="20px"
-          onClick={handleShowList}
+          // onClick={handleShowList}
           style={{ transform: showOptionList && `rotate(180deg)` }}
         >
           <use href={`${SvgSprite}#icon-icon-arrow`}></use>
         </svg>
+
+        {showOptionList && (
+          <ListOptionsSt>
+            {listSelect.map(el => {
+              return (
+                <li key={el.id} data-name={el.name} onClick={handleOptionClick}>
+                  {el.name}
+                </li>
+              );
+            })}
+          </ListOptionsSt>
+        )}
       </ContainerSt>
 
-      <ul>
-        {listSelect.map(el => {
-          return (
-            <li key={el.id} data-name={el.name} onClick={handleOptionClick}>
-              {el.name}
-            </li>
-          );
-        })}
-      </ul>
+      {/* {showOptionList && (
+        <ListOptionsSt>
+          {listSelect.map(el => {
+            return (
+              <li key={el.id} data-name={el.name} onClick={handleOptionClick}>
+                {el.name}
+              </li>
+            );
+          })}
+        </ListOptionsSt>
+      )} */}
     </>
   );
 };
