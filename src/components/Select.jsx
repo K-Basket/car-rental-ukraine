@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { ContainerSt, ListOptionsSt, TitleStyled } from './Select.styled';
 import SvgSprite from 'images/sprite.svg';
+// import { getAllCars } from 'api/api';
 
-export const Select = () => {
+export const Select = ({ title, $width, $colorValue, $maxHeight, allCars }) => {
   const [listSelect] = useState([
     { id: 1, name: 'Australia' },
     { id: 2, name: 'Brazil' },
@@ -24,6 +25,22 @@ export const Select = () => {
   const [getOptionName, setGetOptionName] = useState(null);
   const [showOptionList, setShowOptionList] = useState(false);
 
+  const listCars = () => {
+    const allMakeCars = allCars.map(el => {
+      return { id: el.id, make: el.make };
+    });
+
+    let list = [];
+
+    allMakeCars.forEach(({ make }) => {
+      if (!list.includes(make)) list.push(make);
+    });
+
+    return list;
+  };
+
+  if (allCars) listCars();
+
   useEffect(() => {
     const handleKeyDown = evt => {
       if (evt.code === 'Escape') setShowOptionList(false);
@@ -44,13 +61,13 @@ export const Select = () => {
   };
 
   console.log('getOptionName :>> ', getOptionName);
-  console.log('showOptionList :>> ', showOptionList);
 
   return (
     <>
-      <TitleStyled>Component Select</TitleStyled>
+      {/* <TitleStyled>Component Select</TitleStyled> */}
+      <TitleStyled $colorValue={$colorValue}>{title}</TitleStyled>
 
-      <ContainerSt onClick={handleShowList}>
+      <ContainerSt $width={$width} onClick={handleShowList}>
         <p>{!getOptionName ? 'Enter the text' : `${getOptionName}`}</p>
         <svg
           width="20px"
@@ -62,11 +79,16 @@ export const Select = () => {
         </svg>
 
         {showOptionList && (
-          <ListOptionsSt>
-            {listSelect.map(el => {
+          <ListOptionsSt $width={$width} $maxHeight={$maxHeight}>
+            {listCars().map(make => {
               return (
-                <li key={el.id} data-name={el.name} onClick={handleOptionClick}>
-                  {el.name}
+                <li
+                  key={make}
+                  data-name={make}
+                  onClick={handleOptionClick}
+                  style={{ color: getOptionName === make && '#121417' }}
+                >
+                  {make}
                 </li>
               );
             })}

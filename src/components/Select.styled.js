@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
 export const TitleStyled = styled.h3`
-  color: green;
-  font-size: 18px;
-  padding: 15px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: calc(18 / 14);
+  color: #8a8a89;
+  color: ${props => props.$colorValue || '#8a8a89'};
 `;
 
 export const ContainerSt = styled.div`
@@ -11,7 +14,7 @@ export const ContainerSt = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 224px;
+  width: ${props => props.$width || '224px'};
   height: 48px;
   padding: 0 18px 0 18px;
   background-color: #f7f7fb;
@@ -39,13 +42,13 @@ export const ListOptionsSt = styled.ul`
   color: green;
   padding: 14px 18px;
   margin-top: 4px;
-  width: 224px;
-  max-height: 272px;
+
+  width: ${props => props.$width || '224px'};
+  max-height: ${props => props.$maxHeight || '272px'};
   border-radius: 14px;
   border: 1px solid rgba(18, 20, 23, 0.05);
-  border: 1px solid gray; // temp
   background-color: #ffffff;
-  /* box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.02); */
+  box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.02);
 
   overflow-y: auto;
   scroll-behavior: smooth;
@@ -55,10 +58,13 @@ export const ListOptionsSt = styled.ul`
     font-weight: 500;
     line-height: calc(20 / 16);
     color: rgba(18, 20, 23, 0.2);
-    color: black; // temp
 
     &:not(:last-child) {
       padding-bottom: 8px;
+
+      &:hover {
+        color: #121417;
+      }
     }
   }
 `;
