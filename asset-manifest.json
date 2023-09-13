@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/car-rental-ukraine/static/css/main.b5320759.css",
-    "main.js": "/car-rental-ukraine/static/js/main.6e8fdd1e.js",
+    "main.css": "/car-rental-ukraine/static/css/main.76029c5b.css",
+    "main.js": "/car-rental-ukraine/static/js/main.6f4f378e.js",
     "static/js/415.934da9cc.chunk.js": "/car-rental-ukraine/static/js/415.934da9cc.chunk.js",
-    "static/js/875.e64770c6.chunk.js": "/car-rental-ukraine/static/js/875.e64770c6.chunk.js",
+    "static/js/440.4a2f0d93.chunk.js": "/car-rental-ukraine/static/js/440.4a2f0d93.chunk.js",
     "static/js/395.0c2c3897.chunk.js": "/car-rental-ukraine/static/js/395.0c2c3897.chunk.js",
+    "static/media/sprite.svg": "/car-rental-ukraine/static/media/sprite.d62727a46dac3a26c8f973782a9a8301.svg",
     "index.html": "/car-rental-ukraine/index.html",
-    "main.b5320759.css.map": "/car-rental-ukraine/static/css/main.b5320759.css.map",
-    "main.6e8fdd1e.js.map": "/car-rental-ukraine/static/js/main.6e8fdd1e.js.map",
+    "main.76029c5b.css.map": "/car-rental-ukraine/static/css/main.76029c5b.css.map",
+    "main.6f4f378e.js.map": "/car-rental-ukraine/static/js/main.6f4f378e.js.map",
     "415.934da9cc.chunk.js.map": "/car-rental-ukraine/static/js/415.934da9cc.chunk.js.map",
-    "875.e64770c6.chunk.js.map": "/car-rental-ukraine/static/js/875.e64770c6.chunk.js.map",
+    "440.4a2f0d93.chunk.js.map": "/car-rental-ukraine/static/js/440.4a2f0d93.chunk.js.map",
     "395.0c2c3897.chunk.js.map": "/car-rental-ukraine/static/js/395.0c2c3897.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b5320759.css",
-    "static/js/main.6e8fdd1e.js"
+    "static/css/main.76029c5b.css",
+    "static/js/main.6f4f378e.js"
   ]
 }
