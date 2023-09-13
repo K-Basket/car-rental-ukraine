@@ -14,7 +14,22 @@ const Catalog = () => {
     })();
   }, []);
 
-  // console.log('allCars :>> ', allCars);
+  const carBrendList = () => {
+    const allMakeCars = allCars.map(el => {
+      return { id: el.id, make: el.make };
+    });
+
+    let list = [];
+
+    allMakeCars.forEach(({ make }) => {
+      if (!list.includes(make)) list.push(make);
+    });
+
+    return list;
+  };
+
+  if (allCars) carBrendList();
+
   return (
     <>
       <h1>Catalog page</h1>
@@ -24,7 +39,7 @@ const Catalog = () => {
           title="Car brand"
           $width="224px"
           $maxHeight="272px"
-          allCars={allCars}
+          list={allCars && carBrendList()}
         />
       </section>
     </>
