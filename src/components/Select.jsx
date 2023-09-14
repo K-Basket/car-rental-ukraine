@@ -9,14 +9,19 @@ export const Select = ({
   $colorValue,
   $maxHeight,
   list,
+  getDataSelect,
 }) => {
   const [optionName, setOptionName] = useState(null);
   const [showOptionList, setShowOptionList] = useState(false);
+  const [dataSelect, setDataSelect] = useState({});
 
   useEffect(() => {
     const handleKeyDown = evt => {
       if (evt.code === 'Escape') setShowOptionList(false);
     };
+
+    // передает данные в компонент Catalog
+    getDataSelect(dataSelect);
 
     window.addEventListener('keydown', handleKeyDown);
 
@@ -26,6 +31,9 @@ export const Select = ({
   const handleOptionClick = evt => {
     const option = evt.target.dataset.name;
     setOptionName(option);
+
+    const titleKey = title.split(' ').join('');
+    setDataSelect({ ...dataSelect, ...{ [titleKey]: option } });
   };
 
   const handleShowList = () => {
@@ -33,6 +41,7 @@ export const Select = ({
   };
 
   // console.log('💙💛 optionName :>> ', optionName);
+  // console.log('💙💛 dataSelect :>> ', dataSelect);
 
   return (
     <div>

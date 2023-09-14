@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 
 const Catalog = () => {
   const [allCars, setAllCars] = useState(null);
+  const [filterData, setFilterData] = useState({});
 
   useEffect(() => {
     (async () => {
@@ -13,6 +14,12 @@ const Catalog = () => {
       setAllCars(data);
     })();
   }, []);
+
+  // получает данные из Select
+  const getDataSelect = dataSelect => {
+    setFilterData({ ...filterData, ...dataSelect });
+  };
+  console.log('filterData Catalog :>> ', filterData);
 
   const carBrendList = () => {
     const allMakeCars = allCars.map(({ id, make }) => ({ id, make }));
@@ -51,13 +58,21 @@ const Catalog = () => {
       <h1>Catalog page</h1>
       <p>сторінка, що містить каталог автівок різної комплектації</p>
 
-      <section style={{ display: 'flex' }}>
+      <section
+        style={{
+          display: 'flex',
+          gap: '18px',
+          alignItems: 'flex-end',
+          justifyContent: 'center',
+        }}
+      >
         <Select
           title="Car brand"
           defaultText="Enter the text"
           $width="224px"
           $maxHeight="272px"
           list={allCars && carBrendList()}
+          getDataSelect={getDataSelect}
         />
         <Select
           title="Price/ 1 hour"
@@ -65,10 +80,16 @@ const Catalog = () => {
           $width="125px"
           $maxHeight="188px"
           list={allCars && priceRentList()}
+          getDataSelect={getDataSelect}
         />
+        <Inputs getDataSelect={getDataSelect} />
+
+        <Btn $width="136px" onClick={() => {}}>
+          Search
+        </Btn>
       </section>
 
-      <Btn
+      {/* <Btn
         $width="274px"
         onClick={() => {
           console.log('onClick Button Learn more');
@@ -76,6 +97,7 @@ const Catalog = () => {
       >
         Learn more
       </Btn>
+
       <Btn
         $width="125px"
         onClick={() => {
@@ -83,9 +105,7 @@ const Catalog = () => {
         }}
       >
         Rental car
-      </Btn>
-
-      <Inputs />
+      </Btn> */}
     </>
   );
 };
