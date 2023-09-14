@@ -1,10 +1,8 @@
-// import { useState } from 'react';
 import { getAllCars } from 'api/api';
 import { Select } from 'components/Select';
 import { useEffect, useState } from 'react';
 
 const Catalog = () => {
-  // const [visible, setVisible] = useState(5);
   const [allCars, setAllCars] = useState(null);
 
   useEffect(() => {
@@ -28,18 +26,43 @@ const Catalog = () => {
     return list;
   };
 
-  if (allCars) carBrendList();
+  const priceRentList = () => {
+    const allRentPrice = allCars.map(el => {
+      return { id: el.id, rentalPrice: el.rentalPrice };
+    });
+
+    let list = [];
+
+    allRentPrice.forEach(({ rentalPrice }) => {
+      if (!list.includes(rentalPrice)) list.push(rentalPrice);
+    });
+
+    return list;
+  };
+
+  if (allCars) {
+    carBrendList();
+    priceRentList();
+  }
 
   return (
     <>
       <h1>Catalog page</h1>
       <p>сторінка, що містить каталог автівок різної комплектації</p>
-      <section>
+      <section style={{ display: 'flex' }}>
         <Select
           title="Car brand"
+          defaultText="Enter the text"
           $width="224px"
           $maxHeight="272px"
           list={allCars && carBrendList()}
+        />
+        <Select
+          title="Price/ 1 hour"
+          defaultText="To $"
+          $width="125px"
+          $maxHeight="272px"
+          list={allCars && priceRentList()}
         />
       </section>
     </>

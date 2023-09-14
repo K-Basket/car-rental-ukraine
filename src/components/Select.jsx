@@ -2,7 +2,14 @@ import { useEffect, useState } from 'react';
 import { ContainerSt, ListOptionsSt, TitleStyled } from './Select.styled';
 import SvgSprite from 'images/sprite.svg';
 
-export const Select = ({ title, $width, $colorValue, $maxHeight, list }) => {
+export const Select = ({
+  title,
+  defaultText,
+  $width,
+  $colorValue,
+  $maxHeight,
+  list,
+}) => {
   const [optionName, setOptionName] = useState(null);
   const [showOptionList, setShowOptionList] = useState(false);
 
@@ -32,7 +39,7 @@ export const Select = ({ title, $width, $colorValue, $maxHeight, list }) => {
       <TitleStyled $colorValue={$colorValue}>{title}</TitleStyled>
 
       <ContainerSt $width={$width} onClick={handleShowList}>
-        <p>{!optionName ? 'Enter the text' : `${optionName}`}</p>
+        <p>{!optionName ? `${defaultText}` : `${optionName}`}</p>
         <svg
           width="20px"
           height="20px"
