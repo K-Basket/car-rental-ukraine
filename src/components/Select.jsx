@@ -32,7 +32,7 @@ export const Select = ({
     setShowOptionList(show => !show);
   };
 
-  console.log('optionName :>> ', optionName);
+  // console.log('💙💛 optionName :>> ', optionName);
 
   return (
     <div>

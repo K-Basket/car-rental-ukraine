@@ -1,4 +1,6 @@
 import { getAllCars } from 'api/api';
+import { Btn } from 'components/Btn';
+import { Inputs } from 'components/Inputs';
 import { Select } from 'components/Select';
 import { useEffect, useState } from 'react';
 
@@ -65,6 +67,25 @@ const Catalog = () => {
           list={allCars && priceRentList()}
         />
       </section>
+
+      <Btn
+        $width="274px"
+        onClick={() => {
+          console.log('onClick Button Learn more');
+        }}
+      >
+        Learn more
+      </Btn>
+      <Btn
+        $width="125px"
+        onClick={() => {
+          console.log('onClick Button Rental car');
+        }}
+      >
+        Rental car
+      </Btn>
+
+      <Inputs />
     </>
   );
 };
