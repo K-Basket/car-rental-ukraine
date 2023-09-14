@@ -13,9 +13,7 @@ const Catalog = () => {
   }, []);
 
   const carBrendList = () => {
-    const allMakeCars = allCars.map(el => {
-      return { id: el.id, make: el.make };
-    });
+    const allMakeCars = allCars.map(({ id, make }) => ({ id, make }));
 
     let list = [];
 
@@ -23,13 +21,14 @@ const Catalog = () => {
       if (!list.includes(make)) list.push(make);
     });
 
-    return list;
+    return [...list].sort((a, b) => (a > b ? 1 : -1));
   };
 
   const priceRentList = () => {
-    const allRentPrice = allCars.map(el => {
-      return { id: el.id, rentalPrice: el.rentalPrice };
-    });
+    const allRentPrice = allCars.map(({ id, rentalPrice }) => ({
+      id,
+      rentalPrice: rentalPrice.slice(1),
+    }));
 
     let list = [];
 
@@ -37,7 +36,7 @@ const Catalog = () => {
       if (!list.includes(rentalPrice)) list.push(rentalPrice);
     });
 
-    return list;
+    return [...list].sort((a, b) => a - b);
   };
 
   if (allCars) {
@@ -49,6 +48,7 @@ const Catalog = () => {
     <>
       <h1>Catalog page</h1>
       <p>сторінка, що містить каталог автівок різної комплектації</p>
+
       <section style={{ display: 'flex' }}>
         <Select
           title="Car brand"
@@ -61,7 +61,7 @@ const Catalog = () => {
           title="Price/ 1 hour"
           defaultText="To $"
           $width="125px"
-          $maxHeight="272px"
+          $maxHeight="188px"
           list={allCars && priceRentList()}
         />
       </section>

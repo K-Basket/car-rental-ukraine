@@ -35,11 +35,16 @@ export const Select = ({
   console.log('optionName :>> ', optionName);
 
   return (
-    <>
+    <div>
       <TitleStyled $colorValue={$colorValue}>{title}</TitleStyled>
 
       <ContainerSt $width={$width} onClick={handleShowList}>
-        <p>{!optionName ? `${defaultText}` : `${optionName}`}</p>
+        {title === 'Car brand' ? (
+          <p>{!optionName ? `${defaultText}` : `${optionName}`}</p>
+        ) : (
+          <p>{!optionName ? `${defaultText}` : `To ${optionName}$`}</p>
+        )}
+
         <svg
           width="20px"
           height="20px"
@@ -65,6 +70,6 @@ export const Select = ({
           </ListOptionsSt>
         )}
       </ContainerSt>
-    </>
+    </div>
   );
 };
