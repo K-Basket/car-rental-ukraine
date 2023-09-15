@@ -15,7 +15,7 @@ const Catalog = () => {
     })();
   }, []);
 
-  // получает данные из Select
+  // получает данные из компонентов: Select, Inputs
   const getDataSelect = dataSelect => {
     setFilterData({ ...filterData, ...dataSelect });
   };
@@ -53,6 +53,10 @@ const Catalog = () => {
     priceRentList();
   }
 
+  const handleSearch = () => {
+    console.log('BTN Search');
+  };
+
   return (
     <>
       <h1>Catalog page</h1>
@@ -84,7 +88,7 @@ const Catalog = () => {
         />
         <Inputs getDataSelect={getDataSelect} />
 
-        <Btn $width="136px" onClick={() => {}}>
+        <Btn $width="136px" onClick={handleSearch}>
           Search
         </Btn>
       </section>

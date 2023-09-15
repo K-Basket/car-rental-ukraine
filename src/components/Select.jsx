@@ -1,3 +1,4 @@
+// 💙💛
 import { useEffect, useState } from 'react';
 import { ContainerSt, ListOptionsSt, TitleStyled } from './Select.styled';
 import SvgSprite from 'images/sprite.svg';
@@ -13,15 +14,11 @@ export const Select = ({
 }) => {
   const [optionName, setOptionName] = useState(null);
   const [showOptionList, setShowOptionList] = useState(false);
-  const [dataSelect, setDataSelect] = useState({});
 
   useEffect(() => {
     const handleKeyDown = evt => {
       if (evt.code === 'Escape') setShowOptionList(false);
     };
-
-    // передает данные в компонент Catalog
-    getDataSelect(dataSelect);
 
     window.addEventListener('keydown', handleKeyDown);
 
@@ -33,15 +30,12 @@ export const Select = ({
     setOptionName(option);
 
     const titleKey = title.split(' ').join('');
-    setDataSelect({ ...dataSelect, ...{ [titleKey]: option } });
+    getDataSelect({ ...{ [titleKey]: option } }); // передает данные в state компонента Catalog
   };
 
   const handleShowList = () => {
     setShowOptionList(show => !show);
   };
-
-  // console.log('💙💛 optionName :>> ', optionName);
-  // console.log('💙💛 dataSelect :>> ', dataSelect);
 
   return (
     <div>
