@@ -10,7 +10,11 @@ export const ItemSt = styled.li`
   flex-basis: calc((100% - 87px) / 4);
 `;
 
-export const CardSt = styled.article``;
+export const CardSt = styled.article`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
 
 export const CardThumbSt = styled.div`
   height: 268px;
@@ -23,7 +27,17 @@ export const CardThumbSt = styled.div`
 `;
 
 export const CardContentSt = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
   padding: 10px;
+`;
+
+export const WrapCardHeadingSt = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
 `;
 
 export const CardHeadingSt = styled.h2`
@@ -35,7 +49,7 @@ export const CardHeadingSt = styled.h2`
 `;
 
 export const CardTextSt = styled.p`
-  margin-top: 10px;
+  /* margin-top: 10px; */
 
   color: rgba(18, 20, 23, 0.5);
 `;
