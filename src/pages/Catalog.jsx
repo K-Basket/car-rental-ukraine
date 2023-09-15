@@ -1,11 +1,12 @@
 import { getAllCars } from 'api/api';
 import { Btn } from 'components/Btn';
+import { Cards } from 'components/Cards';
 import { Inputs } from 'components/Inputs';
 import { Select } from 'components/Select';
 import { useEffect, useState } from 'react';
 
 const Catalog = () => {
-  const [allCars, setAllCars] = useState(null);
+  const [allCars, setAllCars] = useState([]);
   const [filterData, setFilterData] = useState({});
 
   useEffect(() => {
@@ -59,8 +60,8 @@ const Catalog = () => {
 
   return (
     <>
-      <h1>Catalog page</h1>
-      <p>сторінка, що містить каталог автівок різної комплектації</p>
+      {/* <h1>Catalog page</h1>
+      <p>сторінка, що містить каталог автівок різної комплектації</p> */}
 
       <section
         style={{
@@ -68,6 +69,8 @@ const Catalog = () => {
           gap: '18px',
           alignItems: 'flex-end',
           justifyContent: 'center',
+          marginTop: '50px',
+          marginBottom: '50px',
         }}
       >
         <Select
@@ -93,6 +96,8 @@ const Catalog = () => {
         </Btn>
       </section>
 
+      <Cards list={allCars && allCars} />
+
       {/* <Btn
         $width="274px"
         onClick={() => {
@@ -100,9 +105,9 @@ const Catalog = () => {
         }}
       >
         Learn more
-      </Btn>
+      </Btn> */}
 
-      <Btn
+      {/* <Btn
         $width="125px"
         onClick={() => {
           console.log('onClick Button Rental car');

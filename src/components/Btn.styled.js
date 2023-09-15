@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const ButtonSt = styled.button`
-  width: ${props => props.$width || '274px'};
+  /* display: inline; */
+  min-width: ${props => props.$width || '274px'};
   padding: 12px 0 12px 0;
 
   font-size: 14px;
