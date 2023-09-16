@@ -2,12 +2,15 @@ import { getAllCars } from 'api/api';
 import { Btn } from 'components/Btn';
 import { Cards } from 'components/Cards';
 import { Inputs } from 'components/Inputs';
+import { Modal } from 'components/Modal';
+import { ModalCard } from 'components/ModalCard';
 import { Select } from 'components/Select';
 import { useEffect, useState } from 'react';
 
 const Catalog = () => {
   const [allCars, setAllCars] = useState([]);
   const [filterData, setFilterData] = useState({});
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -58,6 +61,10 @@ const Catalog = () => {
     console.log('BTN Search');
   };
 
+  const toggleModal = () => {
+    setShowModal(prev => !prev);
+  };
+
   return (
     <>
       {/* <h1>Catalog page</h1>
@@ -96,7 +103,15 @@ const Catalog = () => {
         </Btn>
       </section>
 
-      <Cards list={allCars && allCars} />
+      <section>
+        <Cards onClose={toggleModal} list={allCars && allCars} />
+      </section>
+
+      {showModal && (
+        <Modal onClose={toggleModal}>
+          <ModalCard />
+        </Modal>
+      )}
 
       {/* <Btn
         $width="274px"
