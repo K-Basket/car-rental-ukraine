@@ -10,8 +10,8 @@ import {
   WrapCardHeadingSt,
 } from './Cards.styled';
 
-export const Cards = ({ list, onClose }) => {
-  console.log('list :>> ', list);
+export const Cards = ({ list, onClose, getIdCar }) => {
+  // console.log('list :>> ', list);
 
   return (
     <CardSetSt>
@@ -31,7 +31,13 @@ export const Cards = ({ list, onClose }) => {
           const location = address.split(',');
 
           return (
-            <ItemSt key={id}>
+            <ItemSt
+              key={id}
+              data-card={id}
+              onClick={evt => {
+                getIdCar(evt.currentTarget.dataset.card);
+              }}
+            >
               <CardSt>
                 <CardThumbSt>
                   <img src={img} alt={make} />
@@ -47,7 +53,7 @@ export const Cards = ({ list, onClose }) => {
                   </div>
                 </CardContentSt>
 
-                <Btn $width="100%" onClick={onClose}>
+                <Btn $width="100%" idCard={id} onClick={onClose}>
                   Learn more
                 </Btn>
               </CardSt>

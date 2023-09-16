@@ -1,16 +1,30 @@
 import styled from 'styled-components';
 
 export const ModalCardSt = styled.div`
+  position: relative;
   width: 541px;
   min-height: 752px;
   padding: 40px;
 
   border-radius: 24px;
   background-color: #ffffff;
+
+  & svg {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    stroke: #121417;
+    cursor: pointer;
+  }
 `;
 
 export const CardThumbSt = styled.div`
   & img {
+    border-radius: 15px;
+
+    width: 469px;
+    height: 314px;
+    object-fit: cover;
     border-radius: 15px;
   }
 `;

@@ -11,6 +11,7 @@ const Catalog = () => {
   const [allCars, setAllCars] = useState([]);
   const [filterData, setFilterData] = useState({});
   const [showModal, setShowModal] = useState(false);
+  const [dataCar, setDataCar] = useState({});
 
   useEffect(() => {
     (async () => {
@@ -23,7 +24,7 @@ const Catalog = () => {
   const getDataSelect = dataSelect => {
     setFilterData({ ...filterData, ...dataSelect });
   };
-  console.log('filterData Catalog :>> ', filterData);
+  // console.log('filterData Catalog :>> ', filterData);
 
   const carBrendList = () => {
     const allMakeCars = allCars.map(({ id, make }) => ({ id, make }));
@@ -65,6 +66,12 @@ const Catalog = () => {
     setShowModal(prev => !prev);
   };
 
+  const getIdCar = idCard => {
+    const dataCar = allCars.find(el => el.id === idCard);
+    setDataCar(dataCar);
+  };
+  console.log('dataCar :>> ', dataCar);
+
   return (
     <>
       {/* <h1>Catalog page</h1>
@@ -104,12 +111,16 @@ const Catalog = () => {
       </section>
 
       <section>
-        <Cards onClose={toggleModal} list={allCars && allCars} />
+        <Cards
+          onClose={toggleModal}
+          getIdCar={getIdCar}
+          list={allCars && allCars}
+        />
       </section>
 
       {showModal && (
         <Modal onClose={toggleModal}>
-          <ModalCard />
+          <ModalCard onClose={toggleModal} dataCar={dataCar} />
         </Modal>
       )}
 
