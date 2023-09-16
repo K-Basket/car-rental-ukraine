@@ -1,5 +1,6 @@
 import { getAllCars } from 'api/api';
 import { Btn } from 'components/Btn';
+import { BtnLoadMoreSt } from 'components/Btn.styled';
 import { Cards } from 'components/Cards';
 import { Inputs } from 'components/Inputs';
 import { Modal } from 'components/Modal';
@@ -12,6 +13,7 @@ const Catalog = () => {
   const [filterData, setFilterData] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [dataCar, setDataCar] = useState({});
+  const [firstPage, setFirstPage] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -64,13 +66,19 @@ const Catalog = () => {
 
   const toggleModal = () => {
     setShowModal(prev => !prev);
+    document.body.style.overflow = 'visible'; // re scroll
   };
 
   const getIdCar = idCard => {
     const dataCar = allCars.find(el => el.id === idCard);
     setDataCar(dataCar);
   };
-  console.log('dataCar :>> ', dataCar);
+
+  const listCars = () => {
+    const listFirst = allCars.slice(1, 9);
+
+    return firstPage ? allCars : listFirst;
+  };
 
   return (
     <>
@@ -110,12 +118,27 @@ const Catalog = () => {
         </Btn>
       </section>
 
-      <section>
+      <section
+        style={{
+          marginBottom: '150px',
+        }}
+      >
         <Cards
           onClose={toggleModal}
           getIdCar={getIdCar}
-          list={allCars && allCars}
+          // list={allCars && allCars}
+          list={allCars && listCars()}
         />
+
+        {!firstPage && (
+          <BtnLoadMoreSt
+            onClick={() => {
+              setFirstPage(true);
+            }}
+          >
+            Load more
+          </BtnLoadMoreSt>
+        )}
       </section>
 
       {showModal && (

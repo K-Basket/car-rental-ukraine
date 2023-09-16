@@ -11,8 +11,6 @@ import {
 } from './Cards.styled';
 
 export const Cards = ({ list, onClose, getIdCar }) => {
-  // console.log('list :>> ', list);
-
   return (
     <CardSetSt>
       {list.map(

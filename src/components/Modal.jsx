@@ -10,6 +10,7 @@ export function Modal({ children, onClose }) {
     function handleKeyDown(evt) {
       if (evt.code === 'Escape') {
         onClose();
+        // document.body.style.overflow = 'visible'; // re scroll
       }
     }
     window.addEventListener('keydown', handleKeyDown);
@@ -22,8 +23,11 @@ export function Modal({ children, onClose }) {
   function handleBackdropClick(event) {
     if (event.currentTarget === event.target) {
       onClose();
+      // document.body.style.overflow = 'visible'; // re scroll
     }
   }
+
+  document.body.style.overflow = 'hidden'; // stop scroll
 
   return createPortal(
     <Backdrop onClick={handleBackdropClick}>

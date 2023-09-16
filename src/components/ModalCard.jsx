@@ -9,7 +9,6 @@ import {
   CardTitleDescSt,
   DescriptionSt,
   ModalCardSt,
-  rentalPrice,
 } from './ModalCard.styled';
 
 export const ModalCard = ({ onClose, dataCar }) => {

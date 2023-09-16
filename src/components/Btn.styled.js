@@ -19,3 +19,20 @@ export const ButtonSt = styled.button`
     background-color: #0b44cd;
   }
 `;
+
+export const BtnLoadMoreSt = styled.button`
+  display: block;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+
+  border: none;
+  background-color: initial;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: calc(24 / 16);
+  text-decoration-line: underline;
+
+  color: #3470ff;
+`;
