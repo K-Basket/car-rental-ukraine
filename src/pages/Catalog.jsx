@@ -71,68 +71,46 @@ const Catalog = () => {
     setDataCar(dataCar);
   };
 
-  // const listCars = () => {
-  //   const listFirst = allCars.slice(1, 9);
-
-  //   return firstPage ? allCars : listFirst;
-  // };
-
-  // const filterDataTemp = {
-  //   Carbrand: 'Volvo',
-  //   Pricehour: '25',
-  //   priceFrom: '3000',
-  //   priceTo: '4000',
-  // };
-
-  // console.log('allCars :>> ', allCars);
-  // console.log('filterData :>> ', filterData);
-
   const filtered = () => {
     const make = allCars.filter(el => {
       return el.make === filterData.Carbrand;
     });
 
-    const priceHour = make.filter(el => {
+    const priceHour = allCars.filter(el => {
       return el.rentalPrice === `$${filterData.Pricehour}`;
     });
 
-    const mileage = allCars.filter(el => {
-      return (
-        el.mileage > filterData.priceFrom && el.mileage < filterData.priceTo
-      );
+    let mileage = [];
+
+    allCars.forEach(el => {
+      if (
+        el.mileage > filterData.priceFrom &&
+        el.mileage <= filterData.priceTo
+      ) {
+        mileage.push(el);
+      }
     });
 
-    // if (make) return priceHour;
-    // if (priceHour) return setAllCars(priceHour);
-
-    console.log('make :>> ', make);
-    console.log('priceHour :>> ', priceHour);
-    console.log('mileage :>> ', mileage);
-
-    if (mileage) return setFilterCars(mileage);
-    if (priceHour) return setFilterCars(priceHour);
-    if (make) return setFilterCars(make);
-
-    // return setFilterCars(mileage && priceHour && make);
-
-    // return setAllCars(mileage && priceHour && make);
-    // return setAllCars(make && priceHour && mileage);
-    // return setAllCars(mileage);
+    if (filterData.Carbrand) {
+      setFilterData({});
+      setFilterCars(make);
+    }
+    if (priceHour.length) {
+      setFilterData({});
+      setFilterCars(priceHour);
+    }
+    if (mileage.length) {
+      setFilterData({});
+      setFilterCars(mileage);
+    }
   };
 
   const handleSearch = () => {
-    console.log('BTN Search');
-    // console.log('filtered :>> ', filtered());
     filtered();
   };
 
-  console.log('allCars :>> ', allCars);
-
   return (
     <>
-      {/* <h1>Catalog page</h1>
-      <p>сторінка, що містить каталог автівок різної комплектації</p> */}
-
       <section
         style={{
           display: 'flex',
