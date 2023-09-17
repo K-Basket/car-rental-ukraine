@@ -29,7 +29,7 @@ export const Select = ({
     const option = evt.target.dataset.name;
     setOptionName(option);
 
-    const titleKey = title.split(' ').join('');
+    const titleKey = title.split(' ').join('').split('/1').join('');
     getDataSelect({ ...{ [titleKey]: option } }); // передает данные в state компонента Catalog
   };
 

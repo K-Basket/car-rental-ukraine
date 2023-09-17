@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
+export const TextLabelSt = styled.label`
+  font-size: 14px;
+  font-weight: 500;
+  line-height: calc(18 / 14);
+  color: #8a8a89;
+`;
+
 export const FormSt = styled.form`
   display: flex;
-
-  & label {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: calc(18 / 14);
-    color: #8a8a89;
-  }
 
   & p {
     position: absolute;
@@ -48,7 +48,7 @@ export const InputRight = styled.input`
   display: block;
   width: 160px;
   padding: 14px 0 14px 48px;
-  margin-top: 8px;
+  margin-top: 26px;
   border: none;
   border-radius: 0px 14px 14px 0px;
 

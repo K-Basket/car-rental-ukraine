@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 
 const Catalog = () => {
   const [allCars, setAllCars] = useState([]);
+  const [filterCars, setFilterCars] = useState();
   const [filterData, setFilterData] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [dataCar, setDataCar] = useState({});
@@ -60,10 +61,6 @@ const Catalog = () => {
     priceRentList();
   }
 
-  const handleSearch = () => {
-    console.log('BTN Search');
-  };
-
   const toggleModal = () => {
     setShowModal(prev => !prev);
     document.body.style.overflow = 'visible'; // re scroll
@@ -74,11 +71,62 @@ const Catalog = () => {
     setDataCar(dataCar);
   };
 
-  const listCars = () => {
-    const listFirst = allCars.slice(1, 9);
+  // const listCars = () => {
+  //   const listFirst = allCars.slice(1, 9);
 
-    return firstPage ? allCars : listFirst;
+  //   return firstPage ? allCars : listFirst;
+  // };
+
+  // const filterDataTemp = {
+  //   Carbrand: 'Volvo',
+  //   Pricehour: '25',
+  //   priceFrom: '3000',
+  //   priceTo: '4000',
+  // };
+
+  // console.log('allCars :>> ', allCars);
+  // console.log('filterData :>> ', filterData);
+
+  const filtered = () => {
+    const make = allCars.filter(el => {
+      return el.make === filterData.Carbrand;
+    });
+
+    const priceHour = make.filter(el => {
+      return el.rentalPrice === `$${filterData.Pricehour}`;
+    });
+
+    const mileage = allCars.filter(el => {
+      return (
+        el.mileage > filterData.priceFrom && el.mileage < filterData.priceTo
+      );
+    });
+
+    // if (make) return priceHour;
+    // if (priceHour) return setAllCars(priceHour);
+
+    console.log('make :>> ', make);
+    console.log('priceHour :>> ', priceHour);
+    console.log('mileage :>> ', mileage);
+
+    if (mileage) return setFilterCars(mileage);
+    if (priceHour) return setFilterCars(priceHour);
+    if (make) return setFilterCars(make);
+
+    // return setFilterCars(mileage && priceHour && make);
+
+    // return setAllCars(mileage && priceHour && make);
+    // return setAllCars(make && priceHour && mileage);
+    // return setAllCars(mileage);
   };
+
+  const handleSearch = () => {
+    console.log('BTN Search');
+    // console.log('filtered :>> ', filtered());
+    filtered();
+  };
+
+  console.log('allCars :>> ', allCars);
 
   return (
     <>
@@ -127,7 +175,9 @@ const Catalog = () => {
           onClose={toggleModal}
           getIdCar={getIdCar}
           // list={allCars && allCars}
-          list={allCars && listCars()}
+          list={filterCars ? filterCars : allCars}
+          // list={allCars && filterCars}
+          // list={allCars && listCars()}
         />
 
         {!firstPage && (

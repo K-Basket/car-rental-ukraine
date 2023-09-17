@@ -1,4 +1,4 @@
-import { FormSt, InputLeft, InputRight } from './Inputs.styled';
+import { FormSt, InputLeft, InputRight, TextLabelSt } from './Inputs.styled';
 
 export const Inputs = ({ getDataSelect }) => {
   const handleChange = evt => {
@@ -12,8 +12,8 @@ export const Inputs = ({ getDataSelect }) => {
   return (
     <>
       <FormSt onSubmit={() => {}}>
-        <label>
-          {'Price/ 1 hour'}
+        <TextLabelSt>
+          {'Сar mileage / km'}
 
           <div>
             <p>From</p>
@@ -24,10 +24,10 @@ export const Inputs = ({ getDataSelect }) => {
               autoComplete="off"
             />
           </div>
-        </label>
+        </TextLabelSt>
 
         <label>
-          {'Сar mileage / km'}
+          {/* {'_'} */}
           <div>
             <p>To</p>
             <InputRight
