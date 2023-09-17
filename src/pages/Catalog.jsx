@@ -27,7 +27,6 @@ const Catalog = () => {
   const getDataSelect = dataSelect => {
     setFilterData({ ...filterData, ...dataSelect });
   };
-  // console.log('filterData Catalog :>> ', filterData);
 
   const carBrendList = () => {
     const allMakeCars = allCars.map(({ id, make }) => ({ id, make }));
@@ -152,10 +151,7 @@ const Catalog = () => {
         <Cards
           onClose={toggleModal}
           getIdCar={getIdCar}
-          // list={allCars && allCars}
           list={filterCars ? filterCars : allCars}
-          // list={allCars && filterCars}
-          // list={allCars && listCars()}
         />
 
         {!firstPage && (
@@ -174,24 +170,6 @@ const Catalog = () => {
           <ModalCard onClose={toggleModal} dataCar={dataCar} />
         </Modal>
       )}
-
-      {/* <Btn
-        $width="274px"
-        onClick={() => {
-          console.log('onClick Button Learn more');
-        }}
-      >
-        Learn more
-      </Btn> */}
-
-      {/* <Btn
-        $width="125px"
-        onClick={() => {
-          console.log('onClick Button Rental car');
-        }}
-      >
-        Rental car
-      </Btn> */}
     </>
   );
 };
