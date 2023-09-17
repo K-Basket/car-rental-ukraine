@@ -19,9 +19,19 @@ const Catalog = () => {
   useEffect(() => {
     (async () => {
       const data = await getAllCars();
+
+      if (!firstPage) {
+        const result = data.slice(1, 9);
+
+        return setAllCars(result);
+      }
+
       setAllCars(data);
     })();
-  }, []);
+  }, [firstPage]);
+
+  // console.log('allCars :>> ', allCars);
+  // console.log('firstPage :>> ', firstPage);
 
   // получает данные из компонентов: Select, Inputs
   const getDataSelect = dataSelect => {
