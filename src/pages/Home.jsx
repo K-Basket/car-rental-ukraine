@@ -1,4 +1,9 @@
+import { Btn } from 'components/Btn';
+import { useNavigate } from 'react-router-dom';
+
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <div
       style={{
@@ -11,10 +16,13 @@ const Home = () => {
       }}
     >
       <h1>Home page</h1>
-      <p>
-        домашня сторінка з загальним описом послуг, що надає компанія оформити
-        самостійно!!!
-      </p>
+      <Btn
+        onClick={() => {
+          navigate('/catalog');
+        }}
+      >
+        Go to Catalog
+      </Btn>
     </div>
   );
 };
