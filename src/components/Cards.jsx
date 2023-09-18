@@ -14,7 +14,7 @@ import { putAddFavorite } from 'api/api';
 import { useCustomContext } from './Context';
 
 export const Cards = ({ list, onClose, getIdCar, getFlag }) => {
-  const { changeState } = useCustomContext();
+  const { changeFavorite } = useCustomContext();
 
   return (
     <CardSetSt>
@@ -56,7 +56,7 @@ export const Cards = ({ list, onClose, getIdCar, getFlag }) => {
                     onClick={() => {
                       (async () => {
                         await putAddFavorite(id, { favorite: !favorite });
-                        changeState();
+                        changeFavorite();
                       })();
                     }}
                   >
