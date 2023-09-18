@@ -8,7 +8,7 @@ export const Context = ({ children }) => {
   const [favorite, setFavorite] = useState(null);
 
   const changeState = () => {
-    // setNameState(prev => !prev);
+    setFavorite(prev => !prev);
   };
 
   return (

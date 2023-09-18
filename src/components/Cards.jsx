@@ -11,8 +11,11 @@ import {
 } from './Cards.styled';
 import SvgSprite from 'images/sprite.svg';
 import { putAddFavorite } from 'api/api';
+import { useCustomContext } from './Context';
 
-export const Cards = ({ list, onClose, getIdCar }) => {
+export const Cards = ({ list, onClose, getIdCar, getFlag }) => {
+  const { changeState } = useCustomContext();
+
   return (
     <CardSetSt>
       {list.map(
@@ -53,6 +56,7 @@ export const Cards = ({ list, onClose, getIdCar }) => {
                     onClick={() => {
                       (async () => {
                         await putAddFavorite(id, { favorite: !favorite });
+                        changeState();
                       })();
                     }}
                   >

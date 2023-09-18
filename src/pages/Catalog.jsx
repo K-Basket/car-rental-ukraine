@@ -2,6 +2,7 @@ import { getAllCars } from 'api/api';
 import { Btn } from 'components/Btn';
 import { BtnLoadMoreSt } from 'components/Btn.styled';
 import { Cards } from 'components/Cards';
+import { useCustomContext } from 'components/Context';
 import { Inputs } from 'components/Inputs';
 import { Modal } from 'components/Modal';
 import { ModalCard } from 'components/ModalCard';
@@ -15,6 +16,7 @@ const Catalog = () => {
   const [showModal, setShowModal] = useState(false);
   const [dataCar, setDataCar] = useState({});
   const [firstPage, setFirstPage] = useState(false);
+  const { favorite } = useCustomContext();
 
   useEffect(() => {
     (async () => {
@@ -28,7 +30,7 @@ const Catalog = () => {
 
       setAllCars(data);
     })();
-  }, [firstPage]);
+  }, [firstPage, favorite]);
 
   // console.log('allCars :>> ', allCars);
   // console.log('firstPage :>> ', firstPage);
