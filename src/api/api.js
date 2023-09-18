@@ -7,3 +7,15 @@ export const getAllCars = async () => {
 
   return data;
 };
+
+export const putAddFavorite = async (id, obj) => {
+  const { data } = await axios.put(`${BASE_URL}advert/${id}`, obj);
+
+  return data;
+};
+
+export const getById = async id => {
+  const { data } = await axios(`${BASE_URL}advert/${id}`);
+
+  return data;
+};

@@ -17,12 +17,22 @@ export const CardSt = styled.article`
 `;
 
 export const CardThumbSt = styled.div`
+  position: relative;
   height: 268px;
 
   & img {
     height: 100%;
     object-fit: cover;
     border-radius: 15px;
+  }
+
+  & svg {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    stroke: #ffffffcc;
+    /* fill: #3470ff; */
+    fill: none;
   }
 `;
 

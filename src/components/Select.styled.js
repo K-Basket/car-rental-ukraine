@@ -20,6 +20,7 @@ export const ContainerSt = styled.div`
   background-color: #f7f7fb;
   border-radius: 14px;
   cursor: pointer;
+  z-index: 1;
 
   & p {
     font-size: 18px;

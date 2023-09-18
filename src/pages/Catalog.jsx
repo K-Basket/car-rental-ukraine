@@ -21,7 +21,7 @@ const Catalog = () => {
       const data = await getAllCars();
 
       if (!firstPage) {
-        const result = data.slice(1, 9);
+        const result = data.slice(0, 8);
 
         return setAllCars(result);
       }

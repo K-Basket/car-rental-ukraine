@@ -9,6 +9,8 @@ import {
   ItemSt,
   WrapCardHeadingSt,
 } from './Cards.styled';
+import SvgSprite from 'images/sprite.svg';
+import { putAddFavorite } from 'api/api';
 
 export const Cards = ({ list, onClose, getIdCar }) => {
   return (
@@ -25,6 +27,7 @@ export const Cards = ({ list, onClose, getIdCar }) => {
           rentalCompany,
           type,
           functionalities,
+          favorite,
         }) => {
           const location = address.split(',');
 
@@ -39,6 +42,22 @@ export const Cards = ({ list, onClose, getIdCar }) => {
               <CardSt>
                 <CardThumbSt>
                   <img src={img} alt={make} />
+                  <svg
+                    width="20px"
+                    height="20px"
+                    data-card={id}
+                    style={{
+                      fill: favorite && '#3470ff',
+                      stroke: favorite && 'none',
+                    }}
+                    onClick={() => {
+                      (async () => {
+                        await putAddFavorite(id, { favorite: !favorite });
+                      })();
+                    }}
+                  >
+                    <use href={`${SvgSprite}#icon-icon-like-active`}></use>
+                  </svg>
                 </CardThumbSt>
                 <CardContentSt>
                   <WrapCardHeadingSt>
