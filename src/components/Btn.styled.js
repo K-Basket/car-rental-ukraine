@@ -13,9 +13,10 @@ export const ButtonSt = styled.button`
   border-radius: 12px;
   color: #ffffff;
   background-color: #3470ff;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 
   &:hover,
-  &:focus {
+  :focus {
     background-color: #0b44cd;
   }
 `;

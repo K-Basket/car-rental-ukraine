@@ -8,6 +8,11 @@ export const CardSetSt = styled.ul`
 
 export const ItemSt = styled.li`
   flex-basis: calc((100% - 87px) / 4);
+  transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+  &:hover {
+    scale: 1.007;
+  }
 `;
 
 export const CardSt = styled.article`
@@ -33,6 +38,11 @@ export const CardThumbSt = styled.div`
     stroke: #ffffffcc;
     /* fill: #3470ff; */
     fill: none;
+    transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+    &:hover {
+      scale: 1.1;
+    }
   }
 `;
 
