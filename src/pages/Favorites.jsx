@@ -1,5 +1,6 @@
 import { getAllCars } from 'api/api';
 import { Cards } from 'components/Cards';
+import { useCustomContext } from 'components/Context';
 import { Modal } from 'components/Modal';
 import { ModalCard } from 'components/ModalCard';
 // import { useCustomContext } from 'components/Context';
@@ -11,6 +12,8 @@ const Favorites = () => {
   const [dataCar, setDataCar] = useState({});
   const [listFafotite, setListFafotite] = useState(null);
 
+  const { favorite } = useCustomContext();
+
   useEffect(() => {
     (async () => {
       const data = await getAllCars();
@@ -20,11 +23,8 @@ const Favorites = () => {
       });
 
       setListFafotite(listFavoriteCars);
-
-      console.log('data :>> ', data);
-      console.log('listFavoriteCars :>> ', listFavoriteCars);
     })();
-  }, []);
+  }, [favorite]);
 
   const toggleModal = () => {
     setShowModal(prev => !prev);
@@ -35,8 +35,6 @@ const Favorites = () => {
     const dataCar = listFafotite.find(el => el.id === idCard);
     setDataCar(dataCar);
   };
-
-  console.log('listFafotite :>> ', listFafotite);
 
   return (
     <>
