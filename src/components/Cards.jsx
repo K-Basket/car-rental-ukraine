@@ -63,6 +63,7 @@ export const Cards = ({ list, onClose, getIdCar, getFlag }) => {
                     <use href={`${SvgSprite}#icon-icon-like-active`}></use>
                   </svg>
                 </CardThumbSt>
+
                 <CardContentSt>
                   <WrapCardHeadingSt>
                     <CardHeadingSt>{`${make} ${model}, ${year}`}</CardHeadingSt>

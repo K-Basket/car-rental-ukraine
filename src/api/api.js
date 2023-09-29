@@ -9,13 +9,13 @@ export const getAllCars = async () => {
 };
 
 export const putAddFavorite = async (id, obj) => {
-  const { data } = await axios.put(`${BASE_URL}advert/${id}`, obj);
+  const { data } = await axios.put(`${BASE_URL}adverts/${id}`, obj);
 
   return data;
 };
 
 export const getById = async id => {
-  const { data } = await axios(`${BASE_URL}advert/${id}`);
+  const { data } = await axios(`${BASE_URL}adverts/${id}`);
 
   return data;
 };

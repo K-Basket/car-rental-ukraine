@@ -61,7 +61,7 @@ export const CardTextDescSt = styled.p`
   margin-top: 14px;
 
   font-size: 14px;
-  line-height: calc() (20/14);
+  line-height: calc (20/14);
 
   color: #121417;
 `;
@@ -72,7 +72,7 @@ export const CardTitleDescSt = styled.p`
 
   font-size: 14px;
   font-weight: 500;
-  line-height: calc() (20/14);
+  line-height: calc (20/14);
 
   color: #121417;
 `;
